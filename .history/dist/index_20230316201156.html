@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <div class="weather-container">
+            <p id="city-name"">Nijmegen</p>
+            <div class="weather-info">
+                <img class="cloudy-icon">
+                <p class="degree">11</p>
+                <div class="converter-container">
+                    <button id="celsius-converter">°C</button>
+                    <p style="font-size: 2rem;">|</p>
+                    <button id="fahrenheit-converter">°F</button>
+                </div>
+                <div class="weather-details-container">
+                    <p>
+                        <span style="font-weight: 900;">Precipitation:</span> 
+                        <span id="precipitation">1%</span>
+                    </p>
+                    <p>
+                        <span>Humidity:</span> 
+                        <span id="humidity">52</span>
+                    </p>
+                    <p>
+                        <span>Wind:</span> 
+                        <span id="wind">8 mph</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <form id=search-form>
+            <input id="search-bar" type="text" name="search-bar" placeholder="Search location">
+            <button id="search-button"></button>
+        </form>
+    </div>
+<script src="main.js"></script>
+</body>
+</html>

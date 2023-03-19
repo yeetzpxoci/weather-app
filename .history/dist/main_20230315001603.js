@@ -1,0 +1,1 @@
+(async function(e){const t=await fetch("https://api.openweathermap.org/data/2.5/weather?q=new york&appid=42d9bbce104de377e00f785f9b102383",{mode:"cors"});return await t.json()})().then((e=>{const t=function(e){return{temp:e.main.temp,humidity:e.main.humidity,wind:e.wind.speed,weather:e.weather[0].main,precip:0}}(e);console.log(e),console.log(t)}));

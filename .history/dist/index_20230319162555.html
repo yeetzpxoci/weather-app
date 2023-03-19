@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <div class="main-weather-container">
+            <p id="city-name""></p>
+            <div class="weather-info">
+                <img id="weather-icon">
+                <p id="degree"></p>
+                <div class="converter-container">
+                    <button id="celsius-converter">°C</button>
+                    <p style="font-size: 2rem;">|</p>
+                    <button id="fahrenheit-converter">°F</button>
+                </div>
+                <div class="weather-details-container">
+                    <p>
+                        <span style="font-weight: 900;">Precipitation:</span> 
+                        <span id="precipitation"></span>
+                    </p>
+                    <p>
+                        <span style="font-weight: 900;">Humidity:</span> 
+                        <span id="humidity"></span>
+                    </p>
+                    <p>
+                        <span style="font-weight: 900;">Wind:</span> 
+                        <span id="wind"></span>
+                        <span>m/s</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <form id=search-form>
+            <input id="search-bar" type="text" name="search-bar" placeholder="Search location">
+            <button id="search-button"></button>
+        </form>
+        <div class="daily-weather-container">
+            <div class="daily-weather-info">
+                <p class="day">Sunday</p>
+                <img id="weather-icon" src="http://openweathermap.org/img/wn/02d@2x.png">
+                <p class="degree-daily">28</p>
+            </div>
+            <div class="daily-weather-info">
+                <p class="day">Monday</p>
+                <img id="weather-icon" src="http://openweathermap.org/img/wn/02d@2x.png">
+                <p class="degree-daily">28</p>
+            </div>
+            <div class="daily-weather-info">
+                <p class="day">Tuesday</p>
+                <img id="weather-icon" src="http://openweathermap.org/img/wn/02d@2x.png">
+                <p class="degree-daily">28</p>
+            </div>
+            <div class="daily-weather-info">
+                <p class="day">Wednesday</p>
+                <img id="weather-icon" src="http://openweathermap.org/img/wn/02d@2x.png">
+                <p class="degree-daily">28</p>
+            </div>
+            <div class="daily-weather-info">
+                <p class="day">Thursday</p>
+                <img id="weather-icon" src="http://openweathermap.org/img/wn/02d@2x.png">
+                <p class="degree-daily">28</p>
+            </div>
+        </div>
+    </div>
+<script src="main.js"></script>
+</body>
+</html>
