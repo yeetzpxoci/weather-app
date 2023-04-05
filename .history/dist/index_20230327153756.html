@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img id="thunderstorm" src="https://rare-gallery.com/uploads/posts/380484-4k-wallpaper.jpg">
+    <img id="rain" src="https://images.unsplash.com/photo-1613488329064-aafbeb1e4db1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cmFpbiUyMGphcGFufGVufDB8fDB8fA%3D%3D&w=1000&q=80">
+    <img id="snow" src="https://wallpaper.dog/large/10850424.jpg">
+    <img id="clear" src="https://a-static.besthdwallpaper.com/buildings-of-tokyo-city-shot-on-sunny-day-wallpaper-5120x2880-92935_55.jpg">
+    <img id="cloud" src="https://c1.wallpaperflare.com/preview/586/645/192/japan-sea-winter-road-hokkaido-sea-it-was-cloudy-weather.jpg">
+    <div class="content">
+        <div class="main-weather-container">
+            <p id="city-name""></p>
+            <div class="weather-info">
+                
+                <img id="weather-icon">
+                <p id="degree"></p>
+                <div class="converter-container">
+                    <button id="celsius-converter">°C</button>
+                    <p style="font-size: 2rem;">|</p>
+                    <button id="fahrenheit-converter">°F</button>
+                </div>
+                <div class="weather-details-container">
+                    <p>
+                        <span style="font-weight: 900;">Weather:</span>
+                        <span id="weather-description"></span>
+                    </p>
+                    <p>
+                        <span style="font-weight: 900;">Precipitation:</span> 
+                        <span id="precipitation"></span>
+                    </p>
+                    <p>
+                        <span style="font-weight: 900;">Humidity:</span> 
+                        <span id="humidity"></span>
+                    </p>
+                    <p>
+                        <span style="font-weight: 900;">Wind:</span> 
+                        <span id="wind"></span>
+                        <span>m/s</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <form id=search-form>
+            <input id="search-bar" type="text" name="search-bar" placeholder="Search location">
+            <button id="search-button"></button>
+        </form>
+
+        <div class="day-hour-buttons">
+            <button id="daily">Daily</button>
+            <button id="hourly">Hourly</button>
+        </div>
+
+        <div class="slide-container">
+            <button id="slide-left"><</button>
+            <div class="daily-weather-container">
+                <div class="daily-weather-info">
+                    <p class="day-hour">Sunday</p>
+                    <img class="weather-icon-day-hour" src="http://openweathermap.org/img/wn/02d@2x.png">
+                    <p><span class="degree-day-hour"></span></p>
+                </div>
+                <div class="daily-weather-info">
+                    <p class="day-hour">Monday</p>
+                    <img class="weather-icon-day-hour" src="http://openweathermap.org/img/wn/02d@2x.png">
+                    <p><span class="degree-day-hour"></span></p>
+                </div>
+                <div class="daily-weather-info">
+                    <p class="day-hour">Tuesday</p>
+                    <img class="weather-icon-day-hour" src="http://openweathermap.org/img/wn/02d@2x.png">
+                    <p><span class="degree-day-hour"></span></p>
+                </div>
+                <div class="daily-weather-info">
+                    <p class="day-hour">Wednesday</p>
+                    <img class="weather-icon-day-hour" src="http://openweathermap.org/img/wn/02d@2x.png">
+                    <p><span class="degree-day-hour"></span></p>
+                </div>
+                <div class="daily-weather-info">
+                    <p class="day-hour">Thursday</p>
+                    <img class="weather-icon-day-hour" src="http://openweathermap.org/img/wn/02d@2x.png">
+                    <p><span class="degree-day-hour"></span></p>
+                </div>
+            </div>
+            <button id="slide-right">></button>
+        </div>
+    
+        <div class="nav-point-container">
+            <div class="nav-point"></div>
+            <div class="nav-point"></div>
+            <div class="nav-point"></div>
+        </div>
+    </div>
+<script src="main.js"></script>
+</body>
+</html>
