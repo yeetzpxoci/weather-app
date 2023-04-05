@@ -11,10 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <img id="thunderstorm" src="https://rare-gallery.com/uploads/posts/380484-4k-wallpaper.jpg">
+    <img id="rain" src="https://images.unsplash.com/photo-1613488329064-aafbeb1e4db1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cmFpbiUyMGphcGFufGVufDB8fDB8fA%3D%3D&w=1000&q=80">
+    <img id="snow" src="https://wallpaper.dog/large/10850424.jpg">
+    <img id="clear" src="https://a-static.besthdwallpaper.com/buildings-of-tokyo-city-shot-on-sunny-day-wallpaper-5120x2880-92935_55.jpg">
+    <img id="cloud" src="https://c1.wallpaperflare.com/preview/586/645/192/japan-sea-winter-road-hokkaido-sea-it-was-cloudy-weather.jpg">
     <div class="content">
         <div class="main-weather-container">
-            <p id="city-name""></p>
+            <p id="city-name"></p>
             <div class="weather-info">
+                
                 <img id="weather-icon">
                 <p id="degree"></p>
                 <div class="converter-container">
@@ -23,6 +29,10 @@
                     <button id="fahrenheit-converter">°F</button>
                 </div>
                 <div class="weather-details-container">
+                    <p>
+                        <span style="font-weight: 900;">Weather:</span>
+                        <span id="weather-description"></span>
+                    </p>
                     <p>
                         <span style="font-weight: 900;">Precipitation:</span> 
                         <span id="precipitation"></span>
@@ -39,36 +49,27 @@
                 </div>
             </div>
         </div>
+        
         <form id=search-form>
             <input id="search-bar" type="text" name="search-bar" placeholder="Search location">
             <button id="search-button"></button>
         </form>
-        <div class="daily-weather-container">
-            <div class="daily-weather-info">
-                <p class="day">Sunday</p>
-                <img class="weather-icon-daily" src="http://openweathermap.org/img/wn/02d@2x.png">
-                <p><span class="degree-daily"></span></p>
-            </div>
-            <div class="daily-weather-info">
-                <p class="day">Monday</p>
-                <img class="weather-icon-daily" src="http://openweathermap.org/img/wn/02d@2x.png">
-                <p><span class="degree-daily"></span></p>
-            </div>
-            <div class="daily-weather-info">
-                <p class="day">Tuesday</p>
-                <img class="weather-icon-daily" src="http://openweathermap.org/img/wn/02d@2x.png">
-                <p><span class="degree-daily"></span></p>
-            </div>
-            <div class="daily-weather-info">
-                <p class="day">Wednesday</p>
-                <img class="weather-icon-daily" src="http://openweathermap.org/img/wn/02d@2x.png">
-                <p><span class="degree-daily"></span></p>
-            </div>
-            <div class="daily-weather-info">
-                <p class="day">Thursday</p>
-                <img class="weather-icon-daily" src="http://openweathermap.org/img/wn/02d@2x.png">
-                <p><span class="degree-daily"></span></p>
-            </div>
+
+        <div class="day-hour-buttons">
+            <button id="daily">Daily</button>
+            <button id="hourly">Hourly</button>
+        </div>
+
+        <div class="slide-container">
+            <button id="slide-left"><</button>
+            
+            <button id="slide-right">></button>
+        </div>
+    
+        <div class="nav-point-container">
+            <div class="nav-point"></div>
+            <div class="nav-point"></div>
+            <div class="nav-point"></div>
         </div>
     </div>
 <script src="main.js"></script>
