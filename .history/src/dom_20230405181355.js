@@ -62,29 +62,33 @@ function changeBackground(weatherCondition) {
 }
 
 function switchToCelsius() {
-    // change daily degrees
-    const days = document.querySelectorAll(".degree-day-hour");
-    days.forEach(x => x.innerText = fahrenheitToCelsius(parseInt(x.innerText)) + '°');
+    if (!celsiusActive) {
+        // change daily degrees
+        const days = document.querySelectorAll(".degree-day-hour");
+        days.forEach(x => x.innerText = fahrenheitToCelsius(parseInt(x.innerText)) + '°');
 
-    celsiusConverterButton.style.color = "white";
-    fahrenheitConverterButton.style.color = "rgb(208, 208, 208)";
+        celsiusConverterButton.style.color = "white";
+        fahrenheitConverterButton.style.color = "rgb(208, 208, 208)";
 
-    // change main degree
-    degree.innerText = fahrenheitToCelsius(parseInt(degree.innerText));
+        // change main degree
+        degree.innerText = fahrenheitToCelsius(parseInt(degree.innerText));
 
-    celsiusActive = true;
+        celsiusActive = true;
+    }
 }
 
 function switchToFahrenheit() {
-    const days = document.querySelectorAll(".degree-day-hour");
-    days.forEach(x => x.innerText = celsiusToFahrenheit(parseInt(x.innerText)) + '°');
+    if (celsiusActive) {
+        const days = document.querySelectorAll(".degree-day-hour");
+        days.forEach(x => x.innerText = celsiusToFahrenheit(parseInt(x.innerText)) + '°');
 
-    celsiusConverterButton.style.color = "rgb(208, 208, 208)";
-    fahrenheitConverterButton.style.color = "white";
+        celsiusConverterButton.style.color = "rgb(208, 208, 208)";
+        fahrenheitConverterButton.style.color = "white";
 
-    degree.innerText = celsiusToFahrenheit(parseInt(degree.innerText));
+        degree.innerText = celsiusToFahrenheit(parseInt(degree.innerText));
 
-    celsiusActive = false;
+        celsiusActive = false;
+    }
 }
 
 function changeWeatherDetails(newTemp, newWeather, newPrecipity, newHumidity, newWind, newIcon) {
@@ -248,6 +252,7 @@ document.getElementById("slide-right").addEventListener("click", function () {
     navPoints[activeSlide].style.backgroundColor = "white";
 });
 
+
 searchForm.onsubmit = function () { return false };
 
 searchButton.addEventListener("click", function () {
@@ -263,6 +268,12 @@ searchButton.addEventListener("click", function () {
             document.querySelector(".slide-container").style.opacity = 0;
 
             setTimeout(function () {
+                if (dailyActive) {
+                    document.querySelector(".daily-weather-container").remove();
+                } else {
+                    document.querySelectorAll(".hourly-weather-container").forEach(c => c.remove());
+                }
+
                 changeCityName(locationData[0].name);
                 document.getElementById("city-name").style.opacity = 1;
                 document.querySelector(".slide-container").style.opacity = 1;
@@ -274,20 +285,15 @@ searchButton.addEventListener("click", function () {
                     changeBackground(weatherObj.weather);
                     
                     if (dailyActive) {
-                        document.querySelector(".daily-weather-container").remove();
                         const weatherArray = getWeatherArrayDaily(weatherData.list);
+
                         showDailyWeatherDetails(weatherArray);
                     } else {
-                        document.querySelectorAll(".hourly-weather-container").forEach(c => c.remove());
                         const hoursArray = getHours(weatherData);
                         const weatherArray = getWeatherArrayHourly(weatherData.list);
+
                         showHourlyWeatherDetails(weatherArray, hoursArray);
                     }
-
-                    if (!celsiusActive) {
-                        switchToFahrenheit();
-                    }
-                    
                     document.querySelector(".content").style.opacity = 1;
                 })
             }, 500);
@@ -296,16 +302,12 @@ searchButton.addEventListener("click", function () {
 })
 
 celsiusConverterButton.addEventListener("click", function () {
-    if (!celsiusActive) {
-        switchToCelsius();
-    }
-});
+    
+})
 
 fahrenheitConverterButton.addEventListener("click", function () {
-    if (celsiusActive) {
-        switchToFahrenheit();
-    }
-});
+    
+})
 
 function disableSlideButtons() {
     document.getElementById("slide-left").pointerEvents = "none";
@@ -318,10 +320,12 @@ function enableSlideButtons() {
 }
 
 dailyButton.addEventListener("click", function () {
+    document.querySelector(".slide-wrapper").style.opacity = 0;
+
+    const currentLocation = document.getElementById("city-name").innerText;
+
     if (!dailyActive) {
         dailyActive = true;
-        document.querySelector(".slide-wrapper").style.opacity = 0;
-        const currentLocation = document.getElementById("city-name").innerText;
         document.getElementById("daily").style.color = "white";
         document.getElementById("hourly").style.color = "rgb(208, 208, 208)";
         document.querySelector(".nav-point-container").style.opacity = 0;
@@ -334,9 +338,6 @@ dailyButton.addEventListener("click", function () {
                 getWeatherData(locationData[0].lat, locationData[0].lon).then(weatherData => {
                     const weatherArray = getWeatherArrayDaily(weatherData.list);
                     showDailyWeatherDetails(weatherArray);
-                    if (!celsiusActive) {
-                        switchToFahrenheit();
-                    }
                 })
             })
 
@@ -358,13 +359,15 @@ dailyButton.addEventListener("click", function () {
 }) 
 
 hourlyButton.addEventListener("click", function () {
+    document.querySelector(".slide-wrapper").style.opacity = 0;
+
+    const currentLocation = document.getElementById("city-name").innerText;
+
     if (dailyActive) {
         dailyActive = false;
-        document.querySelector(".slide-wrapper").style.opacity = 0;
-        const currentLocation = document.getElementById("city-name").innerText;
         document.getElementById("daily").style.color = "rgb(208, 208, 208)";
         document.getElementById("hourly").style.color = "white";
-    
+
         setTimeout(function () {
             document.querySelector(".daily-weather-container").remove();
             getLocationData(currentLocation).then(locationData => {
@@ -373,9 +376,6 @@ hourlyButton.addEventListener("click", function () {
                     const hoursArray = getHours(weatherData);
                     const weatherArray = getWeatherArrayHourly(weatherData.list);
                     showHourlyWeatherDetails(weatherArray, hoursArray);
-                    if (!celsiusActive) {
-                        switchToFahrenheit();
-                    }
                 })
             })
             

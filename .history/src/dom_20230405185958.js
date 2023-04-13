@@ -318,10 +318,12 @@ function enableSlideButtons() {
 }
 
 dailyButton.addEventListener("click", function () {
+    document.querySelector(".slide-wrapper").style.opacity = 0;
+
+    const currentLocation = document.getElementById("city-name").innerText;
+
     if (!dailyActive) {
         dailyActive = true;
-        document.querySelector(".slide-wrapper").style.opacity = 0;
-        const currentLocation = document.getElementById("city-name").innerText;
         document.getElementById("daily").style.color = "white";
         document.getElementById("hourly").style.color = "rgb(208, 208, 208)";
         document.querySelector(".nav-point-container").style.opacity = 0;
@@ -334,12 +336,15 @@ dailyButton.addEventListener("click", function () {
                 getWeatherData(locationData[0].lat, locationData[0].lon).then(weatherData => {
                     const weatherArray = getWeatherArrayDaily(weatherData.list);
                     showDailyWeatherDetails(weatherArray);
-                    if (!celsiusActive) {
+                    if (celsiusActive) {
+                        switchToCelsius();
+                    } else {
                         switchToFahrenheit();
                     }
                 })
             })
 
+            
             const slideLeft = document.getElementById("slide-left")
             const slideRight = document.getElementById("slide-right")
 
@@ -358,13 +363,15 @@ dailyButton.addEventListener("click", function () {
 }) 
 
 hourlyButton.addEventListener("click", function () {
+    document.querySelector(".slide-wrapper").style.opacity = 0;
+
+    const currentLocation = document.getElementById("city-name").innerText;
+
     if (dailyActive) {
         dailyActive = false;
-        document.querySelector(".slide-wrapper").style.opacity = 0;
-        const currentLocation = document.getElementById("city-name").innerText;
         document.getElementById("daily").style.color = "rgb(208, 208, 208)";
         document.getElementById("hourly").style.color = "white";
-    
+
         setTimeout(function () {
             document.querySelector(".daily-weather-container").remove();
             getLocationData(currentLocation).then(locationData => {
@@ -373,9 +380,6 @@ hourlyButton.addEventListener("click", function () {
                     const hoursArray = getHours(weatherData);
                     const weatherArray = getWeatherArrayHourly(weatherData.list);
                     showHourlyWeatherDetails(weatherArray, hoursArray);
-                    if (!celsiusActive) {
-                        switchToFahrenheit();
-                    }
                 })
             })
             
